@@ -9,12 +9,18 @@ import * as bcrypt from 'bcrypt';
 export class UserService {
   constructor(@InjectModel(User.name) private userModel: Model<User>) {}
 
+  async findAll(): Promise<User[]> {
+    return this.userModel.find().exec();
+  }
+
   async findOne(username: string): Promise<User> {
-    return this.userModel.findOne({ username });
+    return this.userModel.findOne({ username }).exec();
   }
 
   async create(user: CreateUserDto): Promise<User> {
-    const isUser = await this.userModel.findOne({ username: user.username });
+    const isUser = await this.userModel
+      .findOne({ username: user.username })
+      .exec();
     if (isUser) {
       throw new BadRequestException('Username already exists');
     }
