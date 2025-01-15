@@ -17,13 +17,22 @@ export class AuthController {
 
   @HttpCode(HttpStatus.OK)
   @Post('login')
-  async signIn(@Body() signInDto: SignInDto): Promise<string> {
-    return this.authService.signIn(signInDto.username, signInDto.password);
+  async signIn(@Body() signInDto: SignInDto): Promise<Record<string, string>> {
+    const req = await this.authService.signIn(
+      signInDto.username,
+      signInDto.password,
+    );
+    if (req) {
+      console.log(req);
+    }
+    return req;
   }
 
   @HttpCode(HttpStatus.OK)
   @Post('signup')
-  async signUp(@Body() singUpDto: CreateUserDto): Promise<string> {
+  async signUp(
+    @Body() singUpDto: CreateUserDto,
+  ): Promise<Record<string, string>> {
     return this.authService.signUp(singUpDto);
   }
 
