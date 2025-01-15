@@ -23,6 +23,7 @@ export class AuthService {
         throw new UnauthorizedException('Invalid Login Credentials');
       }
       const passwordMatch = await bcrypt.compare(pass, user.password);
+
       if (!passwordMatch) {
         throw new UnauthorizedException('Invalid Login Credentials');
       }
@@ -54,6 +55,16 @@ export class AuthService {
     } catch (error) {
       console.log(error);
       throw new Error('Error creating user');
+    }
+  }
+
+  async validateToken(token: string): Promise<any> {
+    try {
+      const payload = this.JwtService.verify(token);
+      return payload;
+    } catch (error) {
+      console.log(error);
+      throw new UnauthorizedException();
     }
   }
 }
