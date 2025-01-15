@@ -20,7 +20,7 @@ export class CreateItemDto {
   price: number;
 
   @IsNotEmpty()
-  @IsIn(['Electronics', 'Clothes', 'Food', 'Shoes', 'Cosmetic'])
+  @IsIn(['electronics', 'clothes', 'food', 'shoes', 'cosmetic'])
   category: string;
 
   @IsNotEmpty()
