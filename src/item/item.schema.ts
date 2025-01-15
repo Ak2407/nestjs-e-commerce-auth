@@ -15,7 +15,7 @@ export class Item {
 
   @Prop({
     required: true,
-    enum: ['Electronics', 'Clothes', 'Food', 'Shoes', 'Cosmetic'],
+    enum: ['electronics', 'clothes', 'food', 'shoes', 'cosmetic'],
   })
   category: string;
 

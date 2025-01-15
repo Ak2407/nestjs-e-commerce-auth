@@ -4,11 +4,11 @@ import { CreateItemDto } from './dto/createItem.dto';
 import { Item } from './item.schema';
 
 enum Category {
-  Electronics = 'Electronics',
-  Clothes = 'Clothes',
-  Food = 'Food',
-  Shoes = 'Shoes',
-  Cosmetic = 'Cosmetic',
+  electronics = 'electronics',
+  clothes = 'clothes',
+  food = 'food',
+  shoes = 'shoes',
+  cosmetic = 'cosmetic',
 }
 
 @Controller('item')
