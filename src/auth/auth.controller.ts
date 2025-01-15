@@ -36,10 +36,12 @@ export class AuthController {
     return this.authService.signUp(singUpDto);
   }
 
+  @HttpCode(HttpStatus.OK)
   @Get()
   async authorizeToken(
     @Headers('authorization') authorization: string,
   ): Promise<any> {
+    console.log('here');
     const token = authorization.split(' ')[1];
     return this.authService.validateToken(token);
   }
