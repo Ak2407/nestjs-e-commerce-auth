@@ -13,8 +13,12 @@ export class UserService {
     return this.userModel.find().exec();
   }
 
-  async findOne(username: string): Promise<User> {
+  async findByUsername(username: string): Promise<User> {
     return this.userModel.findOne({ username }).exec();
+  }
+
+  async findById(id: string): Promise<User> {
+    return this.userModel.findById(id).exec();
   }
 
   async create(user: CreateUserDto): Promise<User> {

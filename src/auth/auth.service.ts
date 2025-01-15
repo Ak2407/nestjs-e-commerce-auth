@@ -17,7 +17,7 @@ export class AuthService {
 
   async signIn(username: string, pass: string): Promise<any> {
     try {
-      const user = await this.usersService.findOne(username);
+      const user = await this.usersService.findByUsername(username);
 
       if (!user) {
         throw new UnauthorizedException('Invalid Login Credentials');
@@ -41,7 +41,7 @@ export class AuthService {
 
   async signUp(user: CreateUserDto): Promise<any> {
     try {
-      const isUser = await this.usersService.findOne(user.username);
+      const isUser = await this.usersService.findByUsername(user.username);
 
       if (isUser) {
         throw new BadRequestException('Username already exists');

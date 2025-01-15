@@ -4,7 +4,7 @@ import { User } from 'src/user/user.schema';
 
 @Schema()
 export class Item {
-  @Prop({ required: true })
+  @Prop({ required: true, unique: true })
   name: string;
 
   @Prop({ required: true })
