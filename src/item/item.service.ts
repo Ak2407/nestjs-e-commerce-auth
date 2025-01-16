@@ -32,7 +32,6 @@ export class ItemService {
         throw new Error('Error creating item');
       }
 
-      // seller.items.push(createdItem);
       seller.items.push(createdItem);
       seller.save();
 
