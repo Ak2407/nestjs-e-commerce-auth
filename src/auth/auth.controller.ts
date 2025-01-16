@@ -5,11 +5,13 @@ import {
   Headers,
   HttpCode,
   HttpStatus,
-  Post,
+  Post
+  UseGuards,,
 } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { SignInDto } from './dto/signIn.dto';
 import { CreateUserDto } from 'src/user/dto/createUser.dto';
+import { AuthGuard } from './guards/auth.guard';
 
 @Controller('auth')
 export class AuthController {
@@ -37,6 +39,7 @@ export class AuthController {
   }
 
   @HttpCode(HttpStatus.OK)
+  @UseGuards(AuthGuard)
   @Get()
   async authorizeToken(
     @Headers('authorization') authorization: string,
